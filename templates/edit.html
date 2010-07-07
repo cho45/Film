@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<title>Edit <%= $r->req->param('title') %></title>
+
+<h1>Edit: <%= $r->req->param('title') %></h1>
+<form action="" method="post">
+	<p>
+	<textarea cols="50" rows="10" name="body"><%= $r->stash->{page}->body %></textarea>
+	</p>
+	<p>
+	<input type="submit" value="Edit"/>
+	</p>
+</form>
+

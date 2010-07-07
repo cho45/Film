@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<title><%= $r->req->param('title') %></title>
+
+<h1><%= $r->req->param('title') %></h1>
+<div id="content">
+<%raw= $r->stash->{page}->formatted_body %>
+</div>
+
+<a href="<%= $r->stash->{page}->path('.edit') %>">edit</a>
+
+<div class="history">
+	<ul>
+		<li><a href="<%= $r->stash->{page}->path %>">Most Recent</a></li>
+		<% for my $page_history (@{ $r->stash->{page}->history }) { %>
+		<li><a href="<%= $r->stash->{page}->path %>?history=<%= $page_history->id %>"><%= $page_history->created_at->strftime('%Y-%m-%d %H:%M:%S') %></a></li>
+		<% } %>
+	</ul>
+</div>
+
